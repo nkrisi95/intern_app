@@ -22,7 +22,7 @@ $(document).ready(function(){
   }); //form submission
 
   function stripeResponseHandler(status, response) {
-    var f = $("#new_user");
+    var f = $(".new_user");
 
     var token = response.id;
 
