@@ -2,3 +2,16 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+
+.notice {
+  border-radius: 5px;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.alert {
+  border-radius: 5px;
+  padding: 10px 0;
+  font-weight: bold;
+}

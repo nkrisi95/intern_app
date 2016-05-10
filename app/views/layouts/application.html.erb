@@ -41,10 +41,13 @@
   </div>
 </nav>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 <div class="container">
+  <% if notice %>
+    <p class="notice bg-success text-center"><%= notice %></p>
+  <% elsif alert %>
+    <p class="alert bg-danger text-center"><%= alert %></p>
+  <% end %>
+
   <%= yield %>
 </div>
 
