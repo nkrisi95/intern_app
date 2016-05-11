@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :find_params, only: [:create, :new, :update, :destroy]
+
   def index
   end
 
@@ -6,10 +8,15 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    @profile = @user.build_profile(profile_params)
+    if @profile.save
+      redirect_to user_profile_path, notice: "You've successfully updated your user profile!"
+    else
+      render action: :new
+    end
   end
 
   def new
-    @user = User.find( params[:user_id] )
     @profile = @user.build_profile
   end
 
@@ -21,9 +28,11 @@ class ProfilesController < ApplicationController
 
   private
 
-  def user_params
+  def find_params
+    @user = User.find(params[:user_id])
   end
 
-  def find_user_params
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :description)
   end
 end
