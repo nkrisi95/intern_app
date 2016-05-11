@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :find_params, only: [:create, :new, :update, :destroy]
+  before_action :find_params, only: [:create, :new, :update, :show]
 
   def index
   end
@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = @user.build_profile(profile_params)
     if @profile.save
-      redirect_to user_profile_path, notice: "You've successfully updated your user profile!"
+      redirect_to user_path(params[:user_id]), notice: "You've successfully updated your user profile!"
     else
       render action: :new
     end
